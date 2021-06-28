@@ -29,8 +29,8 @@ namespace WebApplication1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
+            //services.AddControllers();
             string connectionString = Configuration.GetConnectionString("ShopContextInternship");
             services.AddDbContext<ShopContext>(options =>
                                                options.UseSqlServer(connectionString));
@@ -58,6 +58,7 @@ namespace WebApplication1
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCors(action => action.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseEndpoints(endpoints =>
             {

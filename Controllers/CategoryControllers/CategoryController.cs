@@ -19,7 +19,7 @@ namespace WebApplication1.Controllers.CategoryControllers
         {
             _repo = repo;
         }
-
+        [HttpGet]
         public CategoriesRepresentation GetAll()
         {
             var dbCategories = _repo.GetCategories();
